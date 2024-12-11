@@ -1,0 +1,39 @@
+# 5. Gesture-Controlled Robot
+# Arduino code for a gesture-controlled robot
+
+"""
+#include <AFMotor.h>
+#include <Wire.h>
+#include <MPU6050.h>
+
+AF_DCMotor leftMotor(1);
+AF_DCMotor rightMotor(2);
+MPU6050 mpu;
+
+void setup() {
+  Wire.begin();
+  mpu.initialize();
+}
+
+void loop() {
+  int16_t ax, ay, az;
+  mpu.getAcceleration(&ax, &ay, &az);
+
+  if (ay > 1000) {
+    leftMotor.run(FORWARD);
+    rightMotor.run(FORWARD);
+  } else if (ay < -1000) {
+    leftMotor.run(BACKWARD);
+    rightMotor.run(BACKWARD);
+  } else if (ax > 1000) {
+    leftMotor.run(BACKWARD);
+    rightMotor.run(FORWARD);
+  } else if (ax < -1000) {
+    leftMotor.run(FORWARD);
+    rightMotor.run(BACKWARD);
+  } else {
+    leftMotor.run(RELEASE);
+    rightMotor.run(RELEASE);
+  }
+}
+"""
