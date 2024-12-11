@@ -1,0 +1,39 @@
+# 4. Voice-Controlled Robot
+# Arduino code for a voice-controlled robot
+
+"""
+#include <AFMotor.h>
+#include <SoftwareSerial.h>
+
+AF_DCMotor leftMotor(1);
+AF_DCMotor rightMotor(2);
+
+SoftwareSerial bluetooth(10, 11); // RX, TX
+
+void setup() {
+  bluetooth.begin(9600);
+}
+
+void loop() {
+  if (bluetooth.available()) {
+    char command = bluetooth.read();
+
+    if (command == 'F') {
+      leftMotor.run(FORWARD);
+      rightMotor.run(FORWARD);
+    } else if (command == 'B') {
+      leftMotor.run(BACKWARD);
+      rightMotor.run(BACKWARD);
+    } else if (command == 'L') {
+      leftMotor.run(BACKWARD);
+      rightMotor.run(FORWARD);
+    } else if (command == 'R') {
+      leftMotor.run(FORWARD);
+      rightMotor.run(BACKWARD);
+    } else if (command == 'S') {
+      leftMotor.run(RELEASE);
+      rightMotor.run(RELEASE);
+    }
+  }
+}
+"""
